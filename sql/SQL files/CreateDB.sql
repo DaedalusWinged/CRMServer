@@ -22,8 +22,7 @@ WHERE name = N'Contacts' AND type = 'U')
     ActivationDate datetime not null default getdate(),
     DeactivationDate datetime,
     Sex smallint,
-    Notes nvarchar(255),
-    ContactImage image);
+    Notes nvarchar(255));
   END;
 
 IF NOT EXISTS (SELECT * FROM sys.tables

@@ -20,7 +20,7 @@ insert into ActivitySubjects (Description, ActivityTypeID)
   values ('Inbound Call', 1), ('Outbound Call', 1);
 
 insert into ContactAddresses (ContactID, Address, StreetNo, PostalCode, City, PrefectureID, CountryID)
-    values (1000000, 'Taksitzidwn', 12, 12345, 'Athina', 1, 1),
+    values (1000000, 'Taksitzidwn', 11, 12345, 'Athina', 1, 1),
       (1000001, 'Gatiwn', 2, 23456, 'Nafplio', 2, 1),
       (1000002, 'Gatiwn', 3, 23456, 'Nafplio', 2, 1);
 
