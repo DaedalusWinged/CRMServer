@@ -1,4 +1,21 @@
 IF NOT EXISTS (SELECT * FROM sys.tables
+WHERE name = N'Professions' AND type = 'U')
+  BEGIN
+    create table Professions (
+      ID int IDENTITY(1,1) PRIMARY KEY,
+      Description nvarchar(50) not null);
+  END;
+
+IF NOT EXISTS (SELECT * FROM sys.tables
+WHERE name = N'TaxOffices' AND type = 'U')
+  BEGIN
+    create table TaxOffices (
+      ID int IDENTITY(1,1) PRIMARY KEY,
+      Code int not null,
+      Description nvarchar(50) not null);
+  END;
+
+IF NOT EXISTS (SELECT * FROM sys.tables
 WHERE name = N'Contacts' AND type = 'U')
   BEGIN
   CREATE TABLE Contacts (
@@ -35,17 +52,42 @@ WHERE name = N'RelativeContacts' AND type = 'U')
   END;
 
 IF NOT EXISTS (SELECT * FROM sys.tables
+WHERE name = N'Countries' AND type = 'U')
+  BEGIN
+    create table Countries (
+      ID int IDENTITY(1,1) PRIMARY KEY,
+      Description nvarchar(50) not null);
+  END;
+
+IF NOT EXISTS (SELECT * FROM sys.tables
+WHERE name = N'Prefectures' AND type = 'U')
+  BEGIN
+    create table Prefectures (
+      ID int IDENTITY(1,1) PRIMARY KEY,
+      Description nvarchar(50) not null,
+      CountryID int foreign key References Countries(ID) not null);
+  END;
+
+IF NOT EXISTS (SELECT * FROM sys.tables
 WHERE name = N'ContactAddresses' AND type = 'U')
   BEGIN
   create table ContactAddresses (
     ID int identity(1,1) primary KEY,
     ContactID int foreign key references Contacts(ID) not null,
-    Adress nvarchar(255),
+    Address nvarchar(255),
     StreetNo int,
     PostalCode int,
     City nvarchar(255),
     PrefectureID int FOREIGN KEY REFERENCES Prefectures(ID),
     CountryID int FOREIGN KEY REFERENCES Countries(ID));
+  END;
+
+IF NOT EXISTS (SELECT * FROM sys.tables
+WHERE name = N'PhoneTypes' AND type = 'U')
+  BEGIN
+    create table PhoneTypes (
+      ID int IDENTITY(1,1) PRIMARY KEY,
+      Description nvarchar(20) not null);
   END;
 
 IF NOT EXISTS (SELECT * FROM sys.tables
@@ -77,48 +119,6 @@ WHERE name = N'ContactWebSites' AND type = 'U')
   END;
 
 IF NOT EXISTS (SELECT * FROM sys.tables
-WHERE name = N'Prefectures' AND type = 'U')
-  BEGIN
-  create table Prefectures (
-    ID int IDENTITY(1,1) PRIMARY KEY,
-    Description nvarchar(50) not null,
-    CountryID int foreign key References Countries(ID) not null);
-  END;
-
-IF NOT EXISTS (SELECT * FROM sys.tables
-WHERE name = N'Countries' AND type = 'U')
-  BEGIN
-  create table Countries (
-    ID int IDENTITY(1,1) PRIMARY KEY,
-    Description nvarchar(50) not null);
-  END;
-
-IF NOT EXISTS (SELECT * FROM sys.tables
-WHERE name = N'PhoneTypes' AND type = 'U')
-  BEGIN
-  create table PhoneTypes (
-    ID int IDENTITY(1,1) PRIMARY KEY,
-    Description nvarchar(20) not null);
-  END;
-
-IF NOT EXISTS (SELECT * FROM sys.tables
-WHERE name = N'Professions' AND type = 'U')
-  BEGIN
-  create table Professions (
-    ID int IDENTITY(1,1) PRIMARY KEY,
-    Description nvarchar(50) not null);
-  END;
-
-IF NOT EXISTS (SELECT * FROM sys.tables
-WHERE name = N'TaxOffices' AND type = 'U')
-  BEGIN
-  create table TaxOffices (
-    ID int IDENTITY(1,1) PRIMARY KEY,
-    Code int not null,
-    Description nvarchar(50) not null);
-  END;
-
-IF NOT EXISTS (SELECT * FROM sys.tables
 WHERE name = N'Users' AND type = 'U')
   BEGIN
   create table Users (
@@ -126,6 +126,23 @@ WHERE name = N'Users' AND type = 'U')
     Username nvarchar(50) not null unique,
     Password nvarchar(255) not null unique,
     ContactID int Foreign key references Contacts(ID) not null);
+  END;
+
+IF NOT EXISTS (SELECT * FROM sys.tables
+WHERE name = N'ActivityTypes' AND type = 'U')
+  BEGIN
+    create table ActivityTypes (
+      ID int IDENTITY(1,1) PRIMARY KEY,
+      Description nvarchar(50) not null);
+  END;
+
+IF NOT EXISTS (SELECT * FROM sys.tables
+WHERE name = N'ActivitySubjects' AND type = 'U')
+  BEGIN
+    create table ActivitySubjects (
+      ID int IDENTITY(1,1) PRIMARY KEY,
+      Description nvarchar(255) not null,
+      ActivityTypeID int Foreign key references ActivityTypes(ID) not null);
   END;
 
 IF NOT EXISTS (SELECT * FROM sys.tables
@@ -145,30 +162,13 @@ WHERE name = N'Activities' AND type = 'U')
   END;
 
 IF NOT EXISTS (SELECT * FROM sys.tables
-WHERE name = N'ActivityTypes' AND type = 'U')
-  BEGIN
-  create table ActivityTypes (
-    ID int IDENTITY(1,1) PRIMARY KEY,
-    Description nvarchar(50) not null);
-  END;
-
-IF NOT EXISTS (SELECT * FROM sys.tables
-WHERE name = N'ActivitySubjects' AND type = 'U')
-  BEGIN
-  create table ActivitySubjects (
-    ID int IDENTITY(1,1) PRIMARY KEY,
-    Description nvarchar(255) not null,
-    ActivityTypeID int Foreign key references ActivityTypes(ID) not null);
-  END;
-
-IF NOT EXISTS (SELECT * FROM sys.tables
 WHERE name = N'ActivityHistory' AND type = 'U')
   BEGIN
   create table ActivityHistory (
     ID int IDENTITY(1,1) PRIMARY KEY,
     ActivityID int foreign key references Activities(ID) not null,
     OwnerTimeStamp datetime not null default getdate(),
-    OwnerID int foreign key references Activities(OwnerID) not null);
+    OwnerID int foreign key references Users(ID) not null);
   END;
 
 IF NOT EXISTS (SELECT * FROM sys.tables
