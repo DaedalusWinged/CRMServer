@@ -8,12 +8,17 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import java.sql.*;
 
-@WebService()
-@SOAPBinding(style = SOAPBinding.Style.RPC, use = SOAPBinding.Use.LITERAL)
+@WebService
+@SOAPBinding(style = SOAPBinding.Style.RPC)
 public class UserOperationService {
 
     @WebMethod(operationName = "sayHello")
-    public String sayHelloToTheUser(@WebParam(name = "name") String userName) {
+    public String sayHello(@WebParam(name = "userName") String userName) {
+        String address = getAddressFromUserName(userName);
+        return "Hello " + userName + " from " + address;
+    }
+
+    private String getAddressFromUserName(String userName) {
         String address = "";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -34,12 +39,11 @@ public class UserOperationService {
                 e.printStackTrace();
             }
         }
-
-        return "Hello " + userName + " from " + address;
+        return address;
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         UserOperationService userOperationService = new UserOperationService();
-        System.out.println(userOperationService.sayHelloToTheUser("Romanos"));
+        System.out.println(userOperationService.sayHello("Romanos"));
     }
 }

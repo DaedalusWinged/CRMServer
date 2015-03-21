@@ -12,7 +12,7 @@ public class ConnBroker {
     public final Logger logger = Logger.getLogger(this.getClass().getName());
 
     private static final String SQLiteDriver = "org.sqlite.JDBC";
-    private static final String SQLiteUrl = "jdbc:sqlite:INIT_VARIABLE.db";
+    private static final String SQLiteUrl = "jdbc:sqlite:C:/Users/Mercutio Donnati/IdeaProjects/CRMServer/INIT_VARIABLE.db"; // it requires full pathafter ':'!
     private static final String selectQuery = "SELECT VALUE FROM VARIABLE WHERE NAME = ?";
 
     private static final String[] paramList = {"JDBC_URL", "JDBC_USERNAME", "JDBC_PASSWORD", "JDBC_DRIVER"};

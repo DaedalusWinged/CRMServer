@@ -1,26 +1,26 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, 
+Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/j2ee/dtds/web-app_2_3.dtd">
 
 <web-app>
-    <display-name>Jax-WS Spring Server Web Application</display-name>
-
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:applicationContext*.xml</param-value>
-    </context-param>
-
     <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        <listener-class>
+            ged.daedaluswin.listener.MyServletContextListener
+        </listener-class>
     </listener>
-
     <servlet>
-        <servlet-name>jaxws-servlet</servlet-name>
-        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSSpringServlet</servlet-class>
+        <servlet-name>userOperationService</servlet-name>
+        <servlet-class>
+            com.sun.xml.ws.transport.http.servlet.WSServlet
+        </servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>jaxws-servlet</servlet-name>
-        <url-pattern>/webservice/*</url-pattern>
+        <servlet-name>userOperationService</servlet-name>
+        <url-pattern>/userOperationService</url-pattern>
     </servlet-mapping>
+    <session-config>
+        <session-timeout>120</session-timeout>
+    </session-config>
 </web-app>
