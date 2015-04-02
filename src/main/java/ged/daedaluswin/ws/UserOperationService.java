@@ -15,7 +15,12 @@ public class UserOperationService {
     @WebMethod(operationName = "sayHello")
     public String sayHello(@WebParam(name = "userName") String userName) {
         String address = getAddressFromUserName(userName);
-        return "Hello " + userName + " from " + address;
+        if (address == "") {
+            return "No Contact found by the name " + userName;
+        } else {
+            return "Hello " + userName + " from " + address;
+        }
+
     }
 
     private String getAddressFromUserName(String userName) {
@@ -24,7 +29,7 @@ public class UserOperationService {
         PreparedStatement preparedStatement = null;
         try {
             connection = ConnBroker.getInstance().getConnection();
-            preparedStatement = connection.prepareStatement("SELECT ADDRESS FROM TESTING_ENV WHERE NAME = ?");
+            preparedStatement = connection.prepareStatement("select ContactAddresses.Address from Contacts inner join ContactAddresses on Contacts.ID = ContactAddresses.ContactID where Contacts.FirstName like ?;");
             preparedStatement.setString(1, userName);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) address = resultSet.getString("ADDRESS");
@@ -44,6 +49,6 @@ public class UserOperationService {
 
     public void main(String[] args) {
         UserOperationService userOperationService = new UserOperationService();
-        System.out.println(userOperationService.sayHello("Romanos"));
+        //System.out.println(userOperationService.sayHello("Tsirkos"));
     }
 }
