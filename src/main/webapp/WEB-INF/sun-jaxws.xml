@@ -6,7 +6,8 @@
             name="UserOperationService"
             implementation="ged.daedaluswin.ws.UserOperationService"
             url-pattern="/userOperationService"/>
+
     <endpoint name="AuthenticationWS"
               implementation="ged.daedaluswin.ws.AuthenticationWS"
-              url-pattern="/AuthenticationWS"/>
+              url-pattern="/authenticationWS"/>
 </endpoints>
