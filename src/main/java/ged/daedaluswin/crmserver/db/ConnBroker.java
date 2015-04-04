@@ -1,4 +1,4 @@
-package ged.daedaluswin.db;
+package ged.daedaluswin.crmserver.db;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -6,6 +6,8 @@ import java.util.logging.Logger;
 
 /**
  * Created by Romanos Trechlis on 15/3/2015.
+ *
+ * @deprecated
  */
 public class ConnBroker {
 

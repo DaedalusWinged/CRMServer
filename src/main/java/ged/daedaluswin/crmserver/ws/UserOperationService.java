@@ -1,6 +1,6 @@
-package ged.daedaluswin.ws;
+package ged.daedaluswin.crmserver.ws;
 
-import ged.daedaluswin.db.ConnBroker;
+import ged.daedaluswin.crmserver.db.ConnBroker;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

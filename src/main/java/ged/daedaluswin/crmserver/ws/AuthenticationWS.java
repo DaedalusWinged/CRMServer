@@ -1,6 +1,6 @@
-package ged.daedaluswin.ws;
+package ged.daedaluswin.crmserver.ws;
 
-import ged.daedaluswin.db.ConnBroker;
+import ged.daedaluswin.crmserver.db.ConnBroker;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -19,48 +19,46 @@ import java.sql.SQLException;
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class AuthenticationWS {
 
-    @WebMethod(operationName = "AuthenticateUser")
-    public Boolean AuthenticateUser(@WebParam(name = "userName") String userName,
-                                   @WebParam(name = "password") String password) throws SQLException{
+    private static final String sqlQuery = "SELECT count(Users.ID) as 'count' FROM Users WHERE Users.Username = ? and Users.Password = ?";
 
-        return AuthenticateUserDBreq(userName, password);
+    @WebMethod(operationName = "authenticateUser")
+    public Boolean authenticateUser(@WebParam(name = "userName") String userName,
+                                    @WebParam(name = "password") String password) {
+
+        return authenticateUserDBreq(userName, password);
     }
 
-    private Boolean AuthenticateUserDBreq(String userName, String password) throws SQLException{
-        Boolean UserAuthenticated = false;
+    private Boolean authenticateUserDBreq(String userName, String password) {
+        Boolean userAuthenticated = false;
         Integer count;
         Connection connection = null;
-        PreparedStatement preparedStatement;
-
-        String sqlQuery = "SELECT count(Users.ID) as 'count' FROM Users WHERE Users.Username = ? and Users.Password = ?";
-
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
         try {
             connection = ConnBroker.getInstance().getConnection();
             preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, password);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 count = resultSet.getInt("count");
                 if (count == 1) {
-                    UserAuthenticated = true;
+                    userAuthenticated = true;
                 }
             }
             resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
                 if (!connection.isClosed()) connection.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (resultSet != null) resultSet.close();
             } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
-        return UserAuthenticated;
-    }
-
-    public void main(String[] args) {
-        AuthenticationWS authenticationWS = new AuthenticationWS();
-
+        return userAuthenticated;
     }
 }

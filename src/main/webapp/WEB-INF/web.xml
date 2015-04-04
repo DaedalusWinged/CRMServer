@@ -5,32 +5,29 @@ Inc.//DTD Web Application 2.3//EN"
 
 <web-app>
     <listener>
-        <listener-class>
-            ged.daedaluswin.listener.MyServletContextListener
-        </listener-class>
+        <listener-class>ged.daedaluswin.crmserver.listener.MyServletContextListener</listener-class>
     </listener>
+
     <servlet>
         <servlet-name>userOperationService</servlet-name>
-        <servlet-class>
-            com.sun.xml.ws.transport.http.servlet.WSServlet
-        </servlet-class>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>userOperationService</servlet-name>
         <url-pattern>/userOperationService</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>authenticationWS</servlet-name>
-        <servlet-class>
-            com.sun.xml.ws.transport.http.servlet.WSServlet
-        </servlet-class>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>authenticationWS</servlet-name>
         <url-pattern>/authenticationWS</url-pattern>
     </servlet-mapping>
+
     <session-config>
         <session-timeout>120</session-timeout>
     </session-config>
