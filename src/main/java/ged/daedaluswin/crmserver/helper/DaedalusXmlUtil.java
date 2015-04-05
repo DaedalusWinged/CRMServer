@@ -1,9 +1,19 @@
 package ged.daedaluswin.crmserver.helper;
 
+import ged.daedaluswin.crmserver.db.pojos.Contacts;
+
+import javax.persistence.criteria.Root;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.io.StringWriter;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.namespace.NamespaceContext;
+import javax.xml.namespace.QName;
+import javax.xml.stream.Location;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created by Romanos Trechlis on 5/4/2015.
@@ -26,6 +36,23 @@ public class DaedalusXmlUtil {
             marshaller.marshal(obj, stringWriter);
         } catch (JAXBException e) {e.printStackTrace();}
         return stringWriter.toString();
+    }
+
+    public static Object toPojo(String xml, Class c) {
+        Object object = null;
+        InputStream stream = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
+        try {
+            JAXBContext jc = JAXBContext.newInstance(c);
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+            object = unmarshaller.unmarshal(stream);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stream != null) stream.close();
+            } catch (IOException e) {}
+        }
+        return object;
     }
 
 /*
