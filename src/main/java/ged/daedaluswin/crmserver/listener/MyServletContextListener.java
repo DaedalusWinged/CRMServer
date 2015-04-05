@@ -2,8 +2,8 @@ package ged.daedaluswin.crmserver.listener;
 
 
 import com.sun.xml.ws.transport.http.servlet.WSServletContextListener;
-import ged.daedaluswin.crmserver.db.ConnBroker;
-import ged.daedaluswin.crmserver.db.HibernateUtil;
+import ged.daedaluswin.crmserver.helper.ConnBroker;
+import ged.daedaluswin.crmserver.helper.HibernateUtil;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

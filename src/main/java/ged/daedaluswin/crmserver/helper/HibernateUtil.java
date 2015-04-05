@@ -1,4 +1,4 @@
-package ged.daedaluswin.crmserver.db;
+package ged.daedaluswin.crmserver.helper;
 
 import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -41,6 +41,15 @@ public class HibernateUtil {
         Transaction transaction = session.beginTransaction();
         session.saveOrUpdate(obj);
         transaction.commit();
+        if (session != null)session.close();
+    }
+
+    public static void update(Object obj) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(obj);
+        transaction.commit();
+        if (session != null)session.close();
     }
 
     public static List executeSelect(String sql) {

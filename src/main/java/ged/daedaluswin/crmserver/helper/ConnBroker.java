@@ -1,4 +1,4 @@
-package ged.daedaluswin.crmserver.db;
+package ged.daedaluswin.crmserver.helper;
 
 import java.sql.*;
 import java.util.logging.Level;
