@@ -28,15 +28,15 @@ public class Contacts {
     private Timestamp deactivationDate;
     private Short sex;
     private String notes;
-    @XmlAttribute
+    
     public int getId() {
         return id;
     }
-
+    @XmlAttribute
     public void setId(int id) {
         this.id = id;
     }
-    @XmlElement
+
     public String getLastName() {
         return lastName;
     }
@@ -44,7 +44,7 @@ public class Contacts {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    @XmlElement
+
     public String getFirstName() {
         return firstName;
     }
