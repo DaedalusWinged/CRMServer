@@ -1,19 +1,15 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Mercutio Donnati on 1/4/2015.
+ * Created by Romanos Trechlis on 5/4/2015.
  */
-@Entity
-@Table(name = "ActivityHistory", schema = "crm", catalog = "CRM_UAT")
-public class ActivityHistoryEntity {
+public class ActivityHistory {
     private int id;
     private Timestamp ownerTimeStamp;
+    private Activities activitiesByActivityId;
 
-    @Id
-    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -22,8 +18,6 @@ public class ActivityHistoryEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "OwnerTimeStamp")
     public Timestamp getOwnerTimeStamp() {
         return ownerTimeStamp;
     }
@@ -37,7 +31,7 @@ public class ActivityHistoryEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ActivityHistoryEntity that = (ActivityHistoryEntity) o;
+        ActivityHistory that = (ActivityHistory) o;
 
         if (id != that.id) return false;
         if (ownerTimeStamp != null ? !ownerTimeStamp.equals(that.ownerTimeStamp) : that.ownerTimeStamp != null)
@@ -51,5 +45,13 @@ public class ActivityHistoryEntity {
         int result = id;
         result = 31 * result + (ownerTimeStamp != null ? ownerTimeStamp.hashCode() : 0);
         return result;
+    }
+
+    public Activities getActivitiesByActivityId() {
+        return activitiesByActivityId;
+    }
+
+    public void setActivitiesByActivityId(Activities activitiesByActivityId) {
+        this.activitiesByActivityId = activitiesByActivityId;
     }
 }

@@ -1,20 +1,12 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 /**
- * Created by Mercutio Donnati on 1/4/2015.
+ * Created by Romanos Trechlis on 5/4/2015.
  */
-@Entity
-@Table(name = "RelativeContacts", schema = "crm", catalog = "CRM_UAT")
-public class RelativeContactsEntity {
+public class ContactActivityHistory {
     private int id;
+    private Activities activitiesByActivityId;
 
-    @Id
-    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -28,7 +20,7 @@ public class RelativeContactsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RelativeContactsEntity that = (RelativeContactsEntity) o;
+        ContactActivityHistory that = (ContactActivityHistory) o;
 
         if (id != that.id) return false;
 
@@ -38,5 +30,13 @@ public class RelativeContactsEntity {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    public Activities getActivitiesByActivityId() {
+        return activitiesByActivityId;
+    }
+
+    public void setActivitiesByActivityId(Activities activitiesByActivityId) {
+        this.activitiesByActivityId = activitiesByActivityId;
     }
 }

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="ged.daedaluswin.crmserver.db.pojos.Contacts" table="Contacts" schema="crm" catalog="CRM_UAT">
+        <id name="id">
+            <column name="ID" sql-type="int identity" not-null="true"/>
+        </id>
+        <property name="lastName">
+            <column name="LastName" sql-type="nvarchar" length="50" not-null="true"/>
+        </property>
+        <property name="firstName">
+            <column name="FirstName" sql-type="nvarchar" length="50"/>
+        </property>
+        <property name="isPerson">
+            <column name="isPerson" sql-type="smallint"/>
+        </property>
+        <property name="isAccount">
+            <column name="isAccount" sql-type="smallint"/>
+        </property>
+        <property name="isCustomer">
+            <column name="isCustomer" sql-type="smallint"/>
+        </property>
+        <property name="isLead">
+            <column name="isLead" sql-type="smallint"/>
+        </property>
+        <property name="isSupplier">
+            <column name="isSupplier" sql-type="smallint"/>
+        </property>
+        <property name="isCompetitor">
+            <column name="isCompetitor" sql-type="smallint"/>
+        </property>
+        <property name="isPartner">
+            <column name="isPartner" sql-type="smallint"/>
+        </property>
+        <property name="isEmployee">
+            <column name="isEmployee" sql-type="smallint"/>
+        </property>
+        <property name="tin">
+            <column name="TIN" sql-type="int"/>
+        </property>
+        <property name="maritalStatus">
+            <column name="MaritalStatus" sql-type="smallint"/>
+        </property>
+        <property name="birthDate">
+            <column name="BirthDate" sql-type="datetime"/>
+        </property>
+        <property name="isActive">
+            <column name="isActive" sql-type="smallint"/>
+        </property>
+        <property name="activationDate">
+            <column name="ActivationDate" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="deactivationDate">
+            <column name="DeactivationDate" sql-type="datetime"/>
+        </property>
+        <property name="sex">
+            <column name="Sex" sql-type="smallint"/>
+        </property>
+        <property name="notes">
+            <column name="Notes" sql-type="nvarchar"/>
+        </property>
+    </class>
+</hibernate-mapping>

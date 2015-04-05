@@ -9,6 +9,44 @@
         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="hibernate.connection.username">crm</property>
         <property name="hibernate.connection.password">crm_crm</property>
+        <property name="hibernate.show_sql">true</property>
+
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.Activities"/>
+        <mapping resource="hibernateMappings/Activities.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.ActivityHistory"/>
+        <mapping resource="hibernateMappings/ActivityHistory.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.ActivitySubjects"/>
+        <mapping resource="hibernateMappings/ActivitySubjects.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.ActivityTypes"/>
+        <mapping resource="hibernateMappings/ActivityTypes.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.ContactActivityHistory"/>
+        <mapping resource="hibernateMappings/ContactActivityHistory.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.ContactAddresses"/>
+        <mapping resource="hibernateMappings/ContactAddresses.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.ContactEmails"/>
+        <mapping resource="hibernateMappings/ContactEmails.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.ContactPhones"/>
+        <mapping resource="hibernateMappings/ContactPhones.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.ContactWebSites"/>
+        <mapping resource="hibernateMappings/ContactWebSites.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.Contacts"/>
+        <mapping resource="hibernateMappings/Contacts.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.Countries"/>
+        <mapping resource="hibernateMappings/Countries.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.PhoneTypes"/>
+        <mapping resource="hibernateMappings/PhoneTypes.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.Prefectures"/>
+        <mapping resource="hibernateMappings/Prefectures.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.Professions"/>
+        <mapping resource="hibernateMappings/Professions.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.RelativeContacts"/>
+        <mapping resource="hibernateMappings/RelativeContacts.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.TestingEnv"/>
+        <mapping resource="hibernateMappings/TestingEnv.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.TaxOffices"/>
+        <mapping resource="hibernateMappings/TaxOffices.hbm.xml"/>
+        <mapping class="ged.daedaluswin.crmserver.db.pojos.Users"/>
+        <mapping resource="hibernateMappings/Users.hbm.xml"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

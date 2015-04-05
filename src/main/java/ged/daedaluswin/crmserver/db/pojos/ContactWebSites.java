@@ -1,18 +1,13 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
-import javax.persistence.*;
-
 /**
- * Created by Mercutio Donnati on 1/4/2015.
+ * Created by Romanos Trechlis on 5/4/2015.
  */
-@Entity
-@Table(name = "ContactWebSites", schema = "crm", catalog = "CRM_UAT")
-public class ContactWebSitesEntity {
+public class ContactWebSites {
     private int id;
     private String webSite;
+    private Contacts contactsByContactId;
 
-    @Id
-    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -21,8 +16,6 @@ public class ContactWebSitesEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "WebSite")
     public String getWebSite() {
         return webSite;
     }
@@ -36,7 +29,7 @@ public class ContactWebSitesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ContactWebSitesEntity that = (ContactWebSitesEntity) o;
+        ContactWebSites that = (ContactWebSites) o;
 
         if (id != that.id) return false;
         if (webSite != null ? !webSite.equals(that.webSite) : that.webSite != null) return false;
@@ -49,5 +42,13 @@ public class ContactWebSitesEntity {
         int result = id;
         result = 31 * result + (webSite != null ? webSite.hashCode() : 0);
         return result;
+    }
+
+    public Contacts getContactsByContactId() {
+        return contactsByContactId;
+    }
+
+    public void setContactsByContactId(Contacts contactsByContactId) {
+        this.contactsByContactId = contactsByContactId;
     }
 }

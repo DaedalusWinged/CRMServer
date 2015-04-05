@@ -1,20 +1,14 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
-import javax.persistence.*;
-
 /**
- * Created by Romanos Trechlis on 1/4/2015.
+ * Created by Romanos Trechlis on 5/4/2015.
  */
-@Entity
-@Table(name = "TESTING_ENV", schema = "crm", catalog = "CRM_UAT")
-public class TestingEnvEntity {
+public class TestingEnv {
     private int id;
     private String name;
     private String address;
     private String phone;
 
-    @Id
-    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -23,8 +17,6 @@ public class TestingEnvEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -33,8 +25,6 @@ public class TestingEnvEntity {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "ADDRESS")
     public String getAddress() {
         return address;
     }
@@ -43,8 +33,6 @@ public class TestingEnvEntity {
         this.address = address;
     }
 
-    @Basic
-    @Column(name = "PHONE")
     public String getPhone() {
         return phone;
     }
@@ -58,7 +46,7 @@ public class TestingEnvEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TestingEnvEntity that = (TestingEnvEntity) o;
+        TestingEnv that = (TestingEnv) o;
 
         if (id != that.id) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;

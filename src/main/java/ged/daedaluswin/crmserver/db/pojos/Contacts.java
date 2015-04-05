@@ -1,20 +1,34 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.xml.bind.annotation.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Mercutio Donnati on 1/4/2015.
+ * Created by Romanos Trechlis on 5/4/2015.
  */
-@Entity
-@javax.persistence.Table(name = "Contacts", schema = "crm", catalog = "CRM_UAT")
-public class ContactsEntity {
-    private int id;
+@XmlRootElement
+public class Contacts {
 
-    @Id
-    @javax.persistence.Column(name = "ID")
+    private int id;
+    private String lastName;
+    private String firstName;
+    private Short isPerson;
+    private Short isAccount;
+    private Short isCustomer;
+    private Short isLead;
+    private Short isSupplier;
+    private Short isCompetitor;
+    private Short isPartner;
+    private Short isEmployee;
+    private Integer tin;
+    private Short maritalStatus;
+    private Timestamp birthDate;
+    private Short isActive;
+    private Timestamp activationDate;
+    private Timestamp deactivationDate;
+    private Short sex;
+    private String notes;
+    @XmlAttribute
     public int getId() {
         return id;
     }
@@ -22,11 +36,7 @@ public class ContactsEntity {
     public void setId(int id) {
         this.id = id;
     }
-
-    private String lastName;
-
-    @Basic
-    @javax.persistence.Column(name = "LastName")
+    @XmlElement
     public String getLastName() {
         return lastName;
     }
@@ -34,11 +44,7 @@ public class ContactsEntity {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    private String firstName;
-
-    @Basic
-    @javax.persistence.Column(name = "FirstName")
+    @XmlElement
     public String getFirstName() {
         return firstName;
     }
@@ -47,10 +53,6 @@ public class ContactsEntity {
         this.firstName = firstName;
     }
 
-    private Short isPerson;
-
-    @Basic
-    @javax.persistence.Column(name = "isPerson")
     public Short getIsPerson() {
         return isPerson;
     }
@@ -59,10 +61,6 @@ public class ContactsEntity {
         this.isPerson = isPerson;
     }
 
-    private Short isAccount;
-
-    @Basic
-    @javax.persistence.Column(name = "isAccount")
     public Short getIsAccount() {
         return isAccount;
     }
@@ -71,10 +69,6 @@ public class ContactsEntity {
         this.isAccount = isAccount;
     }
 
-    private Short isCustomer;
-
-    @Basic
-    @javax.persistence.Column(name = "isCustomer")
     public Short getIsCustomer() {
         return isCustomer;
     }
@@ -83,10 +77,6 @@ public class ContactsEntity {
         this.isCustomer = isCustomer;
     }
 
-    private Short isLead;
-
-    @Basic
-    @javax.persistence.Column(name = "isLead")
     public Short getIsLead() {
         return isLead;
     }
@@ -95,10 +85,6 @@ public class ContactsEntity {
         this.isLead = isLead;
     }
 
-    private Short isSupplier;
-
-    @Basic
-    @javax.persistence.Column(name = "isSupplier")
     public Short getIsSupplier() {
         return isSupplier;
     }
@@ -107,10 +93,6 @@ public class ContactsEntity {
         this.isSupplier = isSupplier;
     }
 
-    private Short isCompetitor;
-
-    @Basic
-    @javax.persistence.Column(name = "isCompetitor")
     public Short getIsCompetitor() {
         return isCompetitor;
     }
@@ -119,10 +101,6 @@ public class ContactsEntity {
         this.isCompetitor = isCompetitor;
     }
 
-    private Short isPartner;
-
-    @Basic
-    @javax.persistence.Column(name = "isPartner")
     public Short getIsPartner() {
         return isPartner;
     }
@@ -131,10 +109,6 @@ public class ContactsEntity {
         this.isPartner = isPartner;
     }
 
-    private Short isEmployee;
-
-    @Basic
-    @javax.persistence.Column(name = "isEmployee")
     public Short getIsEmployee() {
         return isEmployee;
     }
@@ -143,10 +117,6 @@ public class ContactsEntity {
         this.isEmployee = isEmployee;
     }
 
-    private Integer tin;
-
-    @Basic
-    @javax.persistence.Column(name = "TIN")
     public Integer getTin() {
         return tin;
     }
@@ -155,10 +125,6 @@ public class ContactsEntity {
         this.tin = tin;
     }
 
-    private Short maritalStatus;
-
-    @Basic
-    @javax.persistence.Column(name = "MaritalStatus")
     public Short getMaritalStatus() {
         return maritalStatus;
     }
@@ -167,10 +133,6 @@ public class ContactsEntity {
         this.maritalStatus = maritalStatus;
     }
 
-    private Timestamp birthDate;
-
-    @Basic
-    @javax.persistence.Column(name = "BirthDate")
     public Timestamp getBirthDate() {
         return birthDate;
     }
@@ -179,10 +141,6 @@ public class ContactsEntity {
         this.birthDate = birthDate;
     }
 
-    private Short isActive;
-
-    @Basic
-    @javax.persistence.Column(name = "isActive")
     public Short getIsActive() {
         return isActive;
     }
@@ -191,10 +149,6 @@ public class ContactsEntity {
         this.isActive = isActive;
     }
 
-    private Timestamp activationDate;
-
-    @Basic
-    @javax.persistence.Column(name = "ActivationDate")
     public Timestamp getActivationDate() {
         return activationDate;
     }
@@ -203,10 +157,6 @@ public class ContactsEntity {
         this.activationDate = activationDate;
     }
 
-    private Timestamp deactivationDate;
-
-    @Basic
-    @javax.persistence.Column(name = "DeactivationDate")
     public Timestamp getDeactivationDate() {
         return deactivationDate;
     }
@@ -215,10 +165,6 @@ public class ContactsEntity {
         this.deactivationDate = deactivationDate;
     }
 
-    private Short sex;
-
-    @Basic
-    @javax.persistence.Column(name = "Sex")
     public Short getSex() {
         return sex;
     }
@@ -227,10 +173,6 @@ public class ContactsEntity {
         this.sex = sex;
     }
 
-    private String notes;
-
-    @Basic
-    @javax.persistence.Column(name = "Notes")
     public String getNotes() {
         return notes;
     }
@@ -244,30 +186,31 @@ public class ContactsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ContactsEntity that = (ContactsEntity) o;
+        Contacts contacts = (Contacts) o;
 
-        if (id != that.id) return false;
-        if (activationDate != null ? !activationDate.equals(that.activationDate) : that.activationDate != null)
+        if (id != contacts.id) return false;
+        if (activationDate != null ? !activationDate.equals(contacts.activationDate) : contacts.activationDate != null)
             return false;
-        if (birthDate != null ? !birthDate.equals(that.birthDate) : that.birthDate != null) return false;
-        if (deactivationDate != null ? !deactivationDate.equals(that.deactivationDate) : that.deactivationDate != null)
+        if (birthDate != null ? !birthDate.equals(contacts.birthDate) : contacts.birthDate != null) return false;
+        if (deactivationDate != null ? !deactivationDate.equals(contacts.deactivationDate) : contacts.deactivationDate != null)
             return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (isAccount != null ? !isAccount.equals(that.isAccount) : that.isAccount != null) return false;
-        if (isActive != null ? !isActive.equals(that.isActive) : that.isActive != null) return false;
-        if (isCompetitor != null ? !isCompetitor.equals(that.isCompetitor) : that.isCompetitor != null) return false;
-        if (isCustomer != null ? !isCustomer.equals(that.isCustomer) : that.isCustomer != null) return false;
-        if (isEmployee != null ? !isEmployee.equals(that.isEmployee) : that.isEmployee != null) return false;
-        if (isLead != null ? !isLead.equals(that.isLead) : that.isLead != null) return false;
-        if (isPartner != null ? !isPartner.equals(that.isPartner) : that.isPartner != null) return false;
-        if (isPerson != null ? !isPerson.equals(that.isPerson) : that.isPerson != null) return false;
-        if (isSupplier != null ? !isSupplier.equals(that.isSupplier) : that.isSupplier != null) return false;
-        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-        if (maritalStatus != null ? !maritalStatus.equals(that.maritalStatus) : that.maritalStatus != null)
+        if (firstName != null ? !firstName.equals(contacts.firstName) : contacts.firstName != null) return false;
+        if (isAccount != null ? !isAccount.equals(contacts.isAccount) : contacts.isAccount != null) return false;
+        if (isActive != null ? !isActive.equals(contacts.isActive) : contacts.isActive != null) return false;
+        if (isCompetitor != null ? !isCompetitor.equals(contacts.isCompetitor) : contacts.isCompetitor != null)
             return false;
-        if (notes != null ? !notes.equals(that.notes) : that.notes != null) return false;
-        if (sex != null ? !sex.equals(that.sex) : that.sex != null) return false;
-        if (tin != null ? !tin.equals(that.tin) : that.tin != null) return false;
+        if (isCustomer != null ? !isCustomer.equals(contacts.isCustomer) : contacts.isCustomer != null) return false;
+        if (isEmployee != null ? !isEmployee.equals(contacts.isEmployee) : contacts.isEmployee != null) return false;
+        if (isLead != null ? !isLead.equals(contacts.isLead) : contacts.isLead != null) return false;
+        if (isPartner != null ? !isPartner.equals(contacts.isPartner) : contacts.isPartner != null) return false;
+        if (isPerson != null ? !isPerson.equals(contacts.isPerson) : contacts.isPerson != null) return false;
+        if (isSupplier != null ? !isSupplier.equals(contacts.isSupplier) : contacts.isSupplier != null) return false;
+        if (lastName != null ? !lastName.equals(contacts.lastName) : contacts.lastName != null) return false;
+        if (maritalStatus != null ? !maritalStatus.equals(contacts.maritalStatus) : contacts.maritalStatus != null)
+            return false;
+        if (notes != null ? !notes.equals(contacts.notes) : contacts.notes != null) return false;
+        if (sex != null ? !sex.equals(contacts.sex) : contacts.sex != null) return false;
+        if (tin != null ? !tin.equals(contacts.tin) : contacts.tin != null) return false;
 
         return true;
     }

@@ -1,18 +1,12 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
-import javax.persistence.*;
-
 /**
- * Created by Mercutio Donnati on 1/4/2015.
+ * Created by Romanos Trechlis on 5/4/2015.
  */
-@Entity
-@Table(name = "ContactPhones", schema = "crm", catalog = "CRM_UAT")
-public class ContactPhonesEntity {
+public class ContactPhones {
     private int id;
     private String phone;
 
-    @Id
-    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -21,8 +15,6 @@ public class ContactPhonesEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "Phone")
     public String getPhone() {
         return phone;
     }
@@ -36,7 +28,7 @@ public class ContactPhonesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ContactPhonesEntity that = (ContactPhonesEntity) o;
+        ContactPhones that = (ContactPhones) o;
 
         if (id != that.id) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;

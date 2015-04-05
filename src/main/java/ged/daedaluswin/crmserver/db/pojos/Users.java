@@ -1,19 +1,14 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
-import javax.persistence.*;
-
 /**
- * Created by Mercutio Donnati on 1/4/2015.
+ * Created by Romanos Trechlis on 5/4/2015.
  */
-@Entity
-@Table(name = "Users", schema = "crm", catalog = "CRM_UAT")
-public class UsersEntity {
+public class Users {
     private int id;
     private String username;
     private String password;
+    private Contacts contactsByContactId;
 
-    @Id
-    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -22,8 +17,6 @@ public class UsersEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "Username")
     public String getUsername() {
         return username;
     }
@@ -32,8 +25,6 @@ public class UsersEntity {
         this.username = username;
     }
 
-    @Basic
-    @Column(name = "Password")
     public String getPassword() {
         return password;
     }
@@ -47,11 +38,11 @@ public class UsersEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UsersEntity that = (UsersEntity) o;
+        Users users = (Users) o;
 
-        if (id != that.id) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (id != users.id) return false;
+        if (password != null ? !password.equals(users.password) : users.password != null) return false;
+        if (username != null ? !username.equals(users.username) : users.username != null) return false;
 
         return true;
     }
@@ -62,5 +53,13 @@ public class UsersEntity {
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
+    }
+
+    public Contacts getContactsByContactId() {
+        return contactsByContactId;
+    }
+
+    public void setContactsByContactId(Contacts contactsByContactId) {
+        this.contactsByContactId = contactsByContactId;
     }
 }

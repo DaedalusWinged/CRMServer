@@ -1,21 +1,15 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
-import javax.persistence.*;
-
 /**
- * Created by Mercutio Donnati on 1/4/2015.
+ * Created by Romanos Trechlis on 5/4/2015.
  */
-@Entity
-@Table(name = "ContactAddresses", schema = "crm", catalog = "CRM_UAT")
-public class ContactAddressesEntity {
+public class ContactAddresses {
     private int id;
     private String address;
     private Integer streetNo;
     private Integer postalCode;
     private String city;
 
-    @Id
-    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -24,8 +18,6 @@ public class ContactAddressesEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "Address")
     public String getAddress() {
         return address;
     }
@@ -34,8 +26,6 @@ public class ContactAddressesEntity {
         this.address = address;
     }
 
-    @Basic
-    @Column(name = "StreetNo")
     public Integer getStreetNo() {
         return streetNo;
     }
@@ -44,8 +34,6 @@ public class ContactAddressesEntity {
         this.streetNo = streetNo;
     }
 
-    @Basic
-    @Column(name = "PostalCode")
     public Integer getPostalCode() {
         return postalCode;
     }
@@ -54,8 +42,6 @@ public class ContactAddressesEntity {
         this.postalCode = postalCode;
     }
 
-    @Basic
-    @Column(name = "City")
     public String getCity() {
         return city;
     }
@@ -69,7 +55,7 @@ public class ContactAddressesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ContactAddressesEntity that = (ContactAddressesEntity) o;
+        ContactAddresses that = (ContactAddresses) o;
 
         if (id != that.id) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="ged.daedaluswin.crmserver.db.pojos.Users" table="Users" schema="crm" catalog="CRM_UAT">
+        <id name="id">
+            <column name="ID" sql-type="int identity" not-null="true"/>
+        </id>
+        <property name="username">
+            <column name="Username" sql-type="nvarchar" length="50" not-null="true"/>
+        </property>
+        <property name="password">
+            <column name="Password" sql-type="nvarchar" not-null="true"/>
+        </property>
+        <many-to-one name="contactsByContactId" class="ged.daedaluswin.crmserver.db.pojos.Contacts">
+            <column name="ContactID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

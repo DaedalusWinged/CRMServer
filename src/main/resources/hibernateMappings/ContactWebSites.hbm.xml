@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="ged.daedaluswin.crmserver.db.pojos.ContactWebSites" table="ContactWebSites" schema="crm"
+           catalog="CRM_UAT">
+        <id name="id">
+            <column name="ID" sql-type="int identity" not-null="true"/>
+        </id>
+        <property name="webSite">
+            <column name="WebSite" sql-type="nvarchar"/>
+        </property>
+        <many-to-one name="contactsByContactId" class="ged.daedaluswin.crmserver.db.pojos.Contacts">
+            <column name="ContactID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
