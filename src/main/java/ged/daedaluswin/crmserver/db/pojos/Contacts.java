@@ -1,15 +1,23 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
+import ged.daedaluswin.crmserver.helper.DateAdapter;
+
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Romanos Trechlis on 5/4/2015.
  */
 @XmlRootElement
-public class Contacts {
+public class Contacts implements java.io.Serializable {
 
     private int id;
+    private Set<ContactAddresses> address = new HashSet<ContactAddresses>(0);
     private String lastName;
     private String firstName;
     private Short isPerson;
@@ -35,6 +43,14 @@ public class Contacts {
     @XmlAttribute
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Set<ContactAddresses> getAddress() {
+        return address;
+    }
+    @XmlElement
+    public void setAddress(Set<ContactAddresses> address) {
+        this.address = address;
     }
 
     public String getLastName() {
@@ -136,7 +152,7 @@ public class Contacts {
     public Timestamp getBirthDate() {
         return birthDate;
     }
-
+    @XmlJavaTypeAdapter(DateAdapter.class)
     public void setBirthDate(Timestamp birthDate) {
         this.birthDate = birthDate;
     }
@@ -152,7 +168,7 @@ public class Contacts {
     public Timestamp getActivationDate() {
         return activationDate;
     }
-
+    @XmlJavaTypeAdapter(DateAdapter.class)
     public void setActivationDate(Timestamp activationDate) {
         this.activationDate = activationDate;
     }
@@ -160,7 +176,7 @@ public class Contacts {
     public Timestamp getDeactivationDate() {
         return deactivationDate;
     }
-
+    @XmlJavaTypeAdapter(DateAdapter.class)
     public void setDeactivationDate(Timestamp deactivationDate) {
         this.deactivationDate = deactivationDate;
     }

@@ -7,7 +7,12 @@
     <class name="ged.daedaluswin.crmserver.db.pojos.Contacts" table="Contacts" schema="crm" catalog="CRM_UAT">
         <id name="id">
             <column name="ID" sql-type="int identity" not-null="true"/>
+            <generator class="identity" />
         </id>
+        <set name="address" cascade="all" lazy="false">
+            <key column="ContactID" />
+            <one-to-many class="ged.daedaluswin.crmserver.db.pojos.ContactAddresses"/>
+        </set>
         <property name="lastName">
             <column name="LastName" sql-type="nvarchar" length="50" not-null="true"/>
         </property>

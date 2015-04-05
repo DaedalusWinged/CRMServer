@@ -8,7 +8,11 @@
            catalog="CRM_UAT">
         <id name="id">
             <column name="ID" sql-type="int identity" not-null="true"/>
+            <generator class="identity" />
         </id>
+        <many-to-one name="contacts" class="ged.daedaluswin.crmserver.db.pojos.Contacts" fetch="join" update="true" insert="true">
+            <column name="ContactID" />
+        </many-to-one>
         <property name="address">
             <column name="Address" sql-type="nvarchar"/>
         </property>

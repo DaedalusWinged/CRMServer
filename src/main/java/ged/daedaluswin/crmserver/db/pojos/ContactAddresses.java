@@ -1,10 +1,16 @@
 package ged.daedaluswin.crmserver.db.pojos;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 /**
  * Created by Romanos Trechlis on 5/4/2015.
  */
-public class ContactAddresses {
+@XmlRootElement
+public class ContactAddresses implements java.io.Serializable {
     private int id;
+    private Contacts contacts;
     private String address;
     private Integer streetNo;
     private Integer postalCode;
@@ -13,10 +19,14 @@ public class ContactAddresses {
     public int getId() {
         return id;
     }
-
+    @XmlAttribute
     public void setId(int id) {
         this.id = id;
     }
+
+    public Contacts getContacts() {return contacts;}
+    @XmlTransient
+    public void setContacts(Contacts contacts) {this.contacts = contacts;}
 
     public String getAddress() {
         return address;
