@@ -1,6 +1,6 @@
 package ged.daedaluswin.crmserver.ws;
 
-import ged.daedaluswin.crmserver.db.ConnBroker;
+import ged.daedaluswin.crmserver.helper.ConnBroker;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -18,13 +18,11 @@ import java.sql.SQLException;
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class AuthenticationWS {
-
     private static final String sqlQuery = "SELECT count(Users.ID) as 'count' FROM Users WHERE Users.Username = ? and Users.Password = ?";
 
     @WebMethod(operationName = "authenticateUser")
     public Boolean authenticateUser(@WebParam(name = "userName") String userName,
                                     @WebParam(name = "password") String password) {
-
         return authenticateUserDBreq(userName, password);
     }
 
