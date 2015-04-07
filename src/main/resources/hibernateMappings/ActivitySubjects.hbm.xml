@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="ged.daedaluswin.crmserver.db.pojos.ActivitySubjects" table="ActivitySubjects" schema="crm"
+    <class name="ged.daedaluswin.crmserver.db.pojos.ActivitySubjects" table="ActivitySubjects" schema="dbo"
            catalog="CRM_UAT">
         <id name="id">
             <column name="ID" sql-type="int identity" not-null="true"/>

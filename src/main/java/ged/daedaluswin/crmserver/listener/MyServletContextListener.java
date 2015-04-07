@@ -22,8 +22,12 @@ public final class MyServletContextListener implements ServletContextListener {
         servletContextListener = new WSServletContextListener();
         servletContextListener.contextInitialized(servletContextEvent);
 
-        HibernateUtil.getSession();
-        ConnBroker.getInstance();
+       try {
+           HibernateUtil.getSession();
+           ConnBroker.getInstance();
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

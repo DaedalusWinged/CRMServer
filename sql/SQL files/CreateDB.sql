@@ -181,3 +181,20 @@ WHERE name = N'ContactActivityHistory' AND type = 'U')
       ContactID int foreign key references Contacts(ID) not null,
       ActivityID int foreign key references Activities(ID) not null);
   END;
+
+IF NOT EXISTS (SELECT * FROM sys.tables
+WHERE name = N'Roles' AND type = 'U')
+  BEGIN
+    CREATE TABLE Roles (
+      ID INT IDENTITY(1,1) PRIMARY KEY,
+      Description NVARCHAR(50));
+  END;
+
+IF NOT EXISTS (SELECT * FROM sys.tables
+WHERE name = N'UserRoles' AND type = 'U')
+  BEGIN
+    CREATE TABLE UserRoles (
+      ID INT IDENTITY(1,1) PRIMARY KEY,
+      UserID INT FOREIGN KEY REFERENCES Users(ID) not null,
+      RoleID INT FOREIGN KEY REFERENCES Roles(ID) not null);
+  END;

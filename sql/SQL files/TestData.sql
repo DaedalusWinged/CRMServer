@@ -25,7 +25,7 @@ insert into ContactAddresses (ContactID, Address, StreetNo, PostalCode, City, Pr
       (1000002, 'Gatiwn', 3, 23456, 'Nafplio', 2, 1);
 
 insert into ContactPhones(ContactID, PhoneTypeID, Phone)
-    values (100000, 1, 2101234567);
+    values (1000000, 1, 2101234567);
 
 insert into Contacts (Lastname, Firstname, isPerson, isCustomer, ProfessionID, isActive)
   values ('Tarifas', 'Mitsos', 1, 1, 2, 1),

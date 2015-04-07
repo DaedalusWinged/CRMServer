@@ -7,14 +7,14 @@ import java.util.logging.Logger;
 /**
  * Created by Romanos Trechlis on 15/3/2015.
  *
- * @deprecated
+ *@deprecated
  */
 public class ConnBroker {
 
     public final Logger logger = Logger.getLogger(this.getClass().getName());
 
     private static final String SQLiteDriver = "org.sqlite.JDBC";
-    private static final String SQLiteUrl = "jdbc:sqlite:C:/Users/Mercutio Donnati/IdeaProjects/CRMServer/INIT_VARIABLE.db"; // it requires full pathafter ':'!
+    private static final String SQLiteUrl = "jdbc:sqlite:/home/Projects/CRMServer/INIT_VARIABLE.db"; // it requires full pathafter ':'!
     private static final String selectQuery = "SELECT VALUE FROM VARIABLE WHERE NAME = ?";
 
     private static final String[] paramList = {"JDBC_URL", "JDBC_USERNAME", "JDBC_PASSWORD", "JDBC_DRIVER"};
@@ -29,7 +29,7 @@ public class ConnBroker {
     }
 
     public Connection getConnection() throws Exception {
-        Connection connection = null;
+        Connection connection;
         try {
             Class.forName(valueList[3]);
             connection = DriverManager.getConnection(valueList[0], valueList[1], valueList[2]);

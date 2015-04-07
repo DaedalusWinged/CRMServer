@@ -10,4 +10,8 @@
     <endpoint name="AuthenticationWS"
               implementation="ged.daedaluswin.crmserver.ws.AuthenticationWS"
               url-pattern="/authenticationWS"/>
+
+    <endpoint name="ContactManagementWS"
+              implementation="ged.daedaluswin.crmserver.ws.ContactManagementWS"
+              url-pattern="/contactManagementWS"/>
 </endpoints>
